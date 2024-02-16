@@ -52,7 +52,7 @@
 
     <main id="main" class="main">
 
-        @yield('konten')
+        @yield('content')
 
     </main>
     <!-- End #main -->
