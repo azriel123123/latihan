@@ -1,5 +1,5 @@
-@include('admin.parent');
+@extends('admin.parent');
 
-@section('content')
+@section('konten')
 ini halaman admin index 
 @endsection

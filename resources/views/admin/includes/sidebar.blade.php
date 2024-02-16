@@ -9,6 +9,8 @@
                 <span>Dashboard</span>
             </a>
         </li>
+    </ul>
+</aside>
         <!-- End Dashboard Nav -->
-
+   
         <!-- End Sidebar-->
