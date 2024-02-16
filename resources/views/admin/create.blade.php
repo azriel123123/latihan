@@ -1,5 +1,7 @@
 @extends('admin.parent');
 
 @section('content')
-    ini halaman create admin
+    <div class="container d-flex justify-content-center">
+        <a href="{{ route('admin.index') }}" class="btn btn-primary">bagus</a>
+    </div>
 @endsection
