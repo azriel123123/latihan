@@ -18,7 +18,3 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-route::resource('/about', AboutController::class);
-
-route::get('/profile-index', [ProfileController::class, 'index'])->name('profileroute');
