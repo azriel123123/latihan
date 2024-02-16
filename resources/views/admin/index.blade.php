@@ -14,8 +14,10 @@
             <th>Nama</th>
             <th>Email</th>
             <th>Gender</th>
+            <th>Action</th>
         </tr>
         <tr>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
