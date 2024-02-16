@@ -22,4 +22,3 @@ Route::get('/', function () {
 route::resource('/about', AboutController::class);
 
 route::get('/profile-index', [ProfileController::class, 'index'])->name('profileroute');
-
