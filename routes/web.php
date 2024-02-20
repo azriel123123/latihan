@@ -19,7 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route Category
+Route::resource('catagory', CatagoryController::class);
+
 // Route For AdminControllerResource With Resource
 Route::resource('admin', AdminController::class); 
 
-Route::resource('catagory', CatagoryController::class);
