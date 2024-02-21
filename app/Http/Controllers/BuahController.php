@@ -36,14 +36,13 @@ class BuahController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $this->validate($request,[
             'nama' => 'required',
-            'slug' => 'required|unique:buah',
             'harga' => 'required',
-            'warna' => 'required',
+            'warna' => 'required'
         ]);
     
-        Buah::create([
+        buah::create([
             'nama' => $request->nama,
             'slug' => Str::slug($request->nama),
             'harga' => $request->harga,
