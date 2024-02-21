@@ -13,7 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('buah', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
+            $table->string('slug');
+            $table->float('harga');
+            $table->string('warna');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('buah');
     }
 };

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\buah;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class BuahController extends Controller
@@ -13,7 +15,7 @@ class BuahController extends Controller
      */
     public function index()
     {
-        
+        return view('buah.index');
     }
 
     /**
@@ -23,7 +25,7 @@ class BuahController extends Controller
      */
     public function create()
     {
-        //
+        return view('buah.create');
     }
 
     /**
@@ -34,7 +36,21 @@ class BuahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'slug' => 'required|unique:buah',
+            'harga' => 'required',
+            'warna' => 'required',
+        ]);
+    
+        Buah::create([
+            'nama' => $request->nama,
+            'slug' => Str::slug($request->nama),
+            'harga' => $request->harga,
+            'warna' => $request->warna
+        ]);
+    
+        return redirect()->route('buah.index');
     }
 
     /**
