@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('slug');
-            $table->float('harga');
+            $table->string('harga');
             $table->string('warna');
             $table->timestamps();
         });
