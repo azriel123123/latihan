@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class CatagoryController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,11 @@ class CatagoryController extends Controller
      */
     public function index()
     {
-        return view('catagory.index');
+
+        //return kearah index.blade.php
+        $category = Category::all();
+
+        return view('Category.index', compact('category'));
     }
 
     /**
@@ -25,7 +29,7 @@ class CatagoryController extends Controller
      */
     public function create()
     {
-        return view('catagory.create');
+        return view('Category.create');
     }
 
     /**
@@ -36,38 +40,38 @@ class CatagoryController extends Controller
      */
     public function store(Request $request)
     {
-        //melakukan function store
+        //lakukan function store
+        //lakukan validasi
         $this->validate($request, [
             'name' => 'required'
         ]);
 
-        // simpan data  ke dalam database
-        if (
+        //simpan data ke dalam database
+        if(
             Category::create([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name)
             ])
         ){
-            return redirect()->route('catagory.index')
-            ->with(['succes'], 'Data Berhasil Disimpan');
-        }else {
-            return redirect()->route('catagory.create')
-            ->with(['error'], 'Data Gagal Disimpan');
+            return redirect()->route('Category.index')
+                ->with(['success' => 'Data Berhasil Disimpan']);
+        } else {
+            return redirect()->route('Category.create')
+                ->with(['error'], 'Data Gagal Disimpan');
         }
-
-        // jika sudah maka kembalikan ke halaman category.index
-        return redirect()-> route('catagory.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('Category.show', compact('category'));
     }
 
     /**
@@ -101,6 +105,11 @@ class CatagoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $category->delete();
+
+        return redirect()->route('Category.index')
+            ->with(['success' => 'Data Berhasil Dihapus']);
     }
 }
